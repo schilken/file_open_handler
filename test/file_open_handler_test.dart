@@ -10,9 +10,14 @@ class MockFileOpenHandlerPlatform
 
   @override
   Future<String?> openedWithFile() => Future.value('ttt.txt');
+  
+  @override
+  void setOnFileDroppedCallback(StringCallback callback) {}
 }
 
 void main() {
+  // this must be the first line in main. Otherwise the test will fail.
+  TestWidgetsFlutterBinding.ensureInitialized();
   final FileOpenHandlerPlatform initialPlatform = FileOpenHandlerPlatform.instance;
 
   test('$MethodChannelFileOpenHandler is the default instance', () {
