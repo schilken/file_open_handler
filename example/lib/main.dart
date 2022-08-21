@@ -16,25 +16,30 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _openedWithFile = 'Unknown';
+  String? _openedWithFile;
+  String _droppedFile = 'not yet dropped';
   final _fileOpenHandlerPlugin = FileOpenHandler();
 
   @override
   void initState() {
     super.initState();
+    _fileOpenHandlerPlugin.setOnFileDroppedCallback((String? filepath) {
+      setState(() {
+        _droppedFile = filepath ?? 'Unknown';
+      });
+    });
     initPlatformState();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
+    String? openedFile;
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _fileOpenHandlerPlugin.getOpenedFile() ?? 'Unknown platform version';
+      openedFile = await _fileOpenHandlerPlugin.getOpenedFile();
     } on PlatformException {
-      platformVersion = 'Failed to get opened file.';
+      openedFile = 'Failed to get opened file.';
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -43,7 +48,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _openedWithFile = platformVersion;
+      _openedWithFile = openedFile;
     });
   }
 
@@ -55,7 +60,13 @@ class _MyAppState extends State<MyApp> {
           title: const Text('FileOpenPlugin example'),
         ),
         body: Center(
-          child: Text('Opened with: $_openedWithFile\n'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Opened with: $_openedWithFile'),
+              Text('Dropped File: $_droppedFile'),
+            ],
+          ),
         ),
       ),
     );

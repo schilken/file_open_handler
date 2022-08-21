@@ -2,6 +2,8 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'file_open_handler_method_channel.dart';
 
+typedef StringCallback = void Function(String);
+
 abstract class FileOpenHandlerPlatform extends PlatformInterface {
   /// Constructs a FileOpenHandlerPlatform.
   FileOpenHandlerPlatform() : super(token: _token);
@@ -9,7 +11,6 @@ abstract class FileOpenHandlerPlatform extends PlatformInterface {
   static final Object _token = Object();
 
   static FileOpenHandlerPlatform _instance = MethodChannelFileOpenHandler();
-
   /// The default instance of [FileOpenHandlerPlatform] to use.
   ///
   /// Defaults to [MethodChannelFileOpenHandler].
@@ -25,5 +26,10 @@ abstract class FileOpenHandlerPlatform extends PlatformInterface {
 
   Future<String?> openedWithFile() {
     throw UnimplementedError('openedWithFile() has not been implemented.');
+  }
+
+  void setOnFileDroppedCallback(StringCallback callback) {
+    throw UnimplementedError(
+        'setOnFileDroppedCallback() has not been implemented.');
   }
 }

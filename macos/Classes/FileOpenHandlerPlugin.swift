@@ -3,6 +3,7 @@ import FlutterMacOS
 
 public class FileOpenHandlerPlugin: NSObject, FlutterPlugin {
   private static var _instance: FileOpenHandlerPlugin?
+  private var _channel: FlutterMethodChannel!
   private var _initialFilepath: String?
 
       public static var instance: FileOpenHandlerPlugin {
@@ -15,7 +16,8 @@ public class FileOpenHandlerPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "file_open_handler", binaryMessenger: registrar.messenger)
     let instance = FileOpenHandlerPlugin()
-        _instance = instance
+    _instance = instance
+    instance._channel = channel
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -30,11 +32,10 @@ public class FileOpenHandlerPlugin: NSObject, FlutterPlugin {
 
       @objc
     public func handleFileOpen(pathname: String) {
-//        print("openning file \(pathname)")
-        // let args: NSDictionary = [
-        //     "filepath": pathname,
-        // ]
+        let args: NSDictionary = [
+            "filepath": pathname,
+        ]
         _initialFilepath = pathname
-//        channel.invokeMethod("onFileOpen", arguments: args, result: nil)
+        _channel.invokeMethod("onFileDropped", arguments: args, result: nil)
     }
 }
