@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:file_open_handler/file_open_handler.dart';
 import 'package:file_open_handler/file_open_handler_platform_interface.dart';
@@ -12,7 +14,11 @@ class MockFileOpenHandlerPlatform
   Future<String?> openedWithFile() => Future.value('ttt.txt');
   
   @override
-  void setOnFileDroppedCallback(StringCallback callback) {}
+  void setOnFileDroppedCallback(StringCallback callback) {
+    Future.delayed(Duration.zero, () {
+      callback('droppedFile.txt');
+    });
+  }
 }
 
 void main() {
@@ -31,4 +37,20 @@ void main() {
   
     expect(await fileOpenHandlerPlugin.getOpenedFile(), 'ttt.txt');
   });
+
+  test('setOnFileDroppedCallback', () async {
+    FileOpenHandler fileOpenHandlerPlugin = FileOpenHandler();
+    MockFileOpenHandlerPlatform fakePlatform = MockFileOpenHandlerPlatform();
+    FileOpenHandlerPlatform.instance = fakePlatform;
+    final completer = Completer<String>();
+
+    fileOpenHandlerPlugin.setOnFileDroppedCallback((String filepath) {
+      completer.complete(filepath);
+    });
+
+    final result = await completer.future;
+    expect(result, 'droppedFile.txt');
+  });
+
+
 }
