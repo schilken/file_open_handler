@@ -1,5 +1,5 @@
 name: file_open_handler
-description: A new Flutter plugin project.
+description: Handle dropped file on app icon and 'open -a app file'.
 version: 0.0.1
 homepage:
 
