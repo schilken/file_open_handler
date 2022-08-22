@@ -1,4 +1,5 @@
 # file_open_handler
+[![pub version][pub-image]][pub-url] ![][visits-count-image] 
 
 This plugin allows Flutter apps to handle dropped files on app icon and 'open -a app file'.
 ## Features
