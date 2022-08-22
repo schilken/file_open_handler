@@ -5,7 +5,7 @@ import 'file_open_handler_platform_interface.dart';
 
 /// An implementation of [FileOpenHandlerPlatform] that uses method channels.
 class MethodChannelFileOpenHandler extends FileOpenHandlerPlatform {
-MethodChannelFileOpenHandler() {
+  MethodChannelFileOpenHandler() {
     methodChannel.setMethodCallHandler(_methodCallHandler);
   }
 

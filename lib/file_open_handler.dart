@@ -1,6 +1,4 @@
-
 import 'file_open_handler_platform_interface.dart';
-
 
 class FileOpenHandler {
   /// Returns the filepath of the file that the app was opened with.

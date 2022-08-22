@@ -1,6 +1,6 @@
 name: file_open_handler
-description: Handle dropped file on app icon and 'open -a app file'.
-version: 0.0.1
+description: This plugin for macOS allows Flutter apps to handle dropped files on app icon and 'open -a app file'.
+version: 0.0.2
 homepage: https://github.com/schilken/file_open_handler/tree/master
 
 environment:
