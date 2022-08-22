@@ -24,7 +24,7 @@ Add this to macos/Runner/Info.plist.
 For each file type your app shall be able to open you need a dict.
 The example app is prepared to open the extensions txt and md.
 
-```plist
+```
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -90,6 +90,8 @@ class AppDelegate: FlutterAppDelegate {
      }
 
 }
+```
+
 
 Get the filepath the Flutter app was opened with like this:
 
@@ -118,10 +120,10 @@ See example for a minimal macOS app using this plugin.
 
 ## Unit Tests
 
-✓ file_open_handler_method_channel -  openedWithFile
-✓ file_open_handler -  MethodChannelFileOpenHandler is the default instance
-✓ file_open_handler -  openedWithFile
-✓ file_open_handler -  setOnFileDroppedCallback
+* ✓ file_open_handler_method_channel -  openedWithFile
+* ✓ file_open_handler -  MethodChannelFileOpenHandler is the default instance
+* ✓ file_open_handler -  openedWithFile
+* ✓ file_open_handler -  setOnFileDroppedCallback
 
 The implementation is inspired by the protocol_handler plugin by leanflutter.org.  
 
