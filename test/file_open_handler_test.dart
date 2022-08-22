@@ -26,6 +26,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   final FileOpenHandlerPlatform initialPlatform = FileOpenHandlerPlatform.instance;
 
+  group('file_open_handler - ', () {
   test('$MethodChannelFileOpenHandler is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelFileOpenHandler>());
   });
@@ -52,5 +53,5 @@ void main() {
     expect(result, 'droppedFile.txt');
   });
 
-
+  });
 }

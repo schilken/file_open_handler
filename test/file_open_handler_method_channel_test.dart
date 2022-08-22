@@ -18,7 +18,9 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('openedWithFile', () async {
-    expect(await platform.openedWithFile(), '42');
+  group('file_open_handler_method_channel - ', () {
+    test('openedWithFile', () async {
+      expect(await platform.openedWithFile(), '42');
+    });
   });
 }
