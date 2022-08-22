@@ -1,6 +1,6 @@
 # file_open_handler
 
-Flutter Plugin to handle dropped file on app icon and 'open -a app file'.
+This plugin allows Flutter apps to handle dropped files on app icon and 'open -a app file'.
 ## Features
 
 Get the filepath of a file that is given as a parameter to a call like this in the terminal:
@@ -10,6 +10,15 @@ open -a your-app file-to-open.txt
 ```
 
 Get the filepath of a file, that is dropped on your app icon in the dock or in the finder.
+
+## Platform Support
+
+| Android |  iOS  | Linux | macOS | Windows |
+| :-----: | :---: | :---: | :---: | :-----: |
+|    ➖    |   ➖   |   ➖   |   ✔️   |    ➖    |
+
+## Screenshots
+<img src="images_for_readme/screenshot-open_file_handler_example-App.png"/>
 
 ### Installation
 

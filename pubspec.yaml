@@ -37,3 +37,6 @@ flutter:
       macos:
         pluginClass: FileOpenHandlerPlugin
 
+# This package supports only macOS.
+platforms:
+  macos:
