@@ -29,7 +29,7 @@ dependencies:
   file_open_handler: ^0.0.1
 ```
 
-Add this to macos/Runner/Info.plist. 
+Add this to `macos/Runner/Info.plist`. 
 For each file type your app shall be able to open you need a dict.
 The example app is prepared to open the extensions txt and md.
 
@@ -79,7 +79,7 @@ The example app is prepared to open the extensions txt and md.
 	</array>	
 ```
 
-Add the application:openFile method to macos/Runner/AppDelegate.swift
+Add the `application:openFile` method to `macos/Runner/AppDelegate.swift`
 
 ```swift
 import Cocoa
@@ -102,7 +102,7 @@ class AppDelegate: FlutterAppDelegate {
 ```
 
 
-Get the filepath the Flutter app was opened with like this:
+In your app get the filepath the Flutter app was opened with like this:
 
 ```dart
 import 'package:protocol_handler/file_open_handler.dart';
